@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Si ya estas inscrito seleccionate Seleccionate</h1>
+     <form method="POST" action="{{path('politico_add_evento')}}">
+       <select name="idpolitico">
+        {% for politico in politicos %}
+          <option value="{{politico.id}}">{{politico.nombre}}</option>
+        {% endfor %}
+      </select>
+      <input type="submit" value="entrar">
+    </form>
+
+
+    <h1>Si aun no estas dado de alta registrate</h1>
+    <a href="{{ path('autoridad_new') }}">Regitrate politico</a><br>
+
+{% endblock %}

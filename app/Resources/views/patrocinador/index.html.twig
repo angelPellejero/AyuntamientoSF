@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Patrocinadors list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Cantidad</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for patrocinador in patrocinadors %}
+            <tr>
+                <td><a href="{{ path('patrocinador_show', { 'id': patrocinador.id }) }}">{{ patrocinador.id }}</a></td>
+                <td>{{ patrocinador.nombre }}</td>
+                <td>{{ patrocinador.cantidad }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('patrocinador_show', { 'id': patrocinador.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('patrocinador_edit', { 'id': patrocinador.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('patrocinador_new') }}">Create a new patrocinador</a>
+        </li>
+    </ul>
+{% endblock %}

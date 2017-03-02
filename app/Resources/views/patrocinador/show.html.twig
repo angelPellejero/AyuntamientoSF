@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Patrocinador</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ patrocinador.id }}</td>
+            </tr>
+            <tr>
+                <th>Nombre</th>
+                <td>{{ patrocinador.nombre }}</td>
+            </tr>
+            <tr>
+                <th>Cantidad</th>
+                <td>{{ patrocinador.cantidad }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('patrocinador_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('patrocinador_edit', { 'id': patrocinador.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

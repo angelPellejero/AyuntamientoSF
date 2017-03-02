@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Autoridads list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Cargo</th>
+                <th>Partido</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for autoridad in autoridads %}
+            <tr>
+                <td><a href="{{ path('autoridad_show', { 'id': autoridad.id }) }}">{{ autoridad.id }}</a></td>
+                <td>{{ autoridad.nombre }}</td>
+                <td>{{ autoridad.cargo }}</td>
+                <td>{{ autoridad.partido }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('autoridad_show', { 'id': autoridad.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('autoridad_edit', { 'id': autoridad.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('autoridad_new') }}">Create a new autoridad</a>
+        </li>
+    </ul>
+{% endblock %}

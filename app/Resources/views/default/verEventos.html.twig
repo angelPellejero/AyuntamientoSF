@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Eventos list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Descripcion</th>
+                <th>Fyh</th>
+                <th>Lugar</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for evento in eventos %}
+            <tr>
+                <td>{{ evento.nombre }}</td>
+                <td>{{ evento.descripcion }}</td>
+                <td>{% if evento.fyh %}{{ evento.fyh|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ evento.lugar }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('participar_ciudadano', { 'id': evento.id }) }}">Participar</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

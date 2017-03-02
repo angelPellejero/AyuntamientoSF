@@ -1,0 +1,34 @@
+home_index:
+    path:     /home
+    defaults: { _controller: "AppBundle:Default:index" }
+    methods:  GET
+
+actividad_show_eventos:
+  path:     /{id}/showEventos
+  defaults: { _controller: "AppBundle:Default:showEventos" }
+  methods:  GET
+
+participar_ciudadano:
+    path:     /{id}/participar
+    defaults: { _controller: "AppBundle:Default:participar" }
+    methods:  GET
+
+participante_add:
+    path:     /new
+    defaults: { _controller: "AppBundle:Default:newParticipante" }
+    methods:  [GET, POST]
+
+politico_entrar:
+  path:     /politico
+  defaults: { _controller: "AppBundle:Default:identificate" }
+  methods:  GET
+
+politico_add_evento:
+  path:     /addEventoPolitico
+  defaults: { _controller: "AppBundle:Default:addEventoPolitico" }
+  methods:  [GET, POST]
+
+eventoAddBy:
+  path:     /addEventoPoliticoBy
+  defaults: { _controller: "AppBundle:Default:addEventoPoliticoBy" }
+  methods:  [GET, POST]

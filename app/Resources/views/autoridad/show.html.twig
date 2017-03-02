@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Autoridad</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ autoridad.id }}</td>
+            </tr>
+            <tr>
+                <th>Nombre</th>
+                <td>{{ autoridad.nombre }}</td>
+            </tr>
+            <tr>
+                <th>Cargo</th>
+                <td>{{ autoridad.cargo }}</td>
+            </tr>
+            <tr>
+                <th>Partido</th>
+                <td>{{ autoridad.partido }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('autoridad_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('autoridad_edit', { 'id': autoridad.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

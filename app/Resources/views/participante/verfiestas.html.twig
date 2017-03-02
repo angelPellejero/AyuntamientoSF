@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Eventos list</h1>
+
+    <table>
+        <thead>
+            <tr>
+              <th>Id</th>
+              <th>Nombre</th>
+              <th>Descripcion</th>
+              <th>Finicio</th>
+              <th>Ffin</th>
+                <th>Seleccionar</th>
+            </tr>
+        </thead>
+        <tbody>
+          {% for actividad in actividades %}
+            <tr>
+              <td>{{ actividad.id }}</td>
+              <td>{{ actividad.nombre }}</td>
+              <td>{{ actividad.descripcion }}</td>
+              <td>{% if actividad.finicio %}{{ actividad.finicio|date('Y-m-d') }}{% endif %}</td>
+              <td>{% if actividad.ffin %}{{ actividad.ffin|date('Y-m-d') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('actividad_show_eventos', { 'id': actividad.id }) }}">Ver todas las actividades</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('home_index') }}">Volver al Inicio</a>
+        </li>
+    </ul>
+{% endblock %}

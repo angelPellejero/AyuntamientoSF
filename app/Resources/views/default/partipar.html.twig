@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Si ya estas inscrito seleccionate Seleccionate</h1>
+     <form method="POST" action="{{path('participante_add')}}">
+       <select name="idParticipante">
+        {% for participante in participantes %}
+          <option value="{{participante.id}}">{{participante.nombre}}</option>
+        {% endfor %}
+      </select>
+      <input type="hidden" name="idActividad" value="{{idActividad}}">
+      <input type="submit" value="Incribirse">
+    </form>
+
+
+    <h1>Si eres nuevo necesitas registrarte</h1>
+    <a href="{{ path('participante_new') }}">Regitro participante</a><br>
+
+{% endblock %}

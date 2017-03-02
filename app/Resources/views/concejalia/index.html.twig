@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Concejalias list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Descripcion</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for concejalium in concejalias %}
+            <tr>
+                <td><a href="{{ path('concejalia_show', { 'id': concejalium.id }) }}">{{ concejalium.id }}</a></td>
+                <td>{{ concejalium.nombre }}</td>
+                <td>{{ concejalium.descripcion }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('concejalia_show', { 'id': concejalium.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('concejalia_edit', { 'id': concejalium.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('concejalia_new') }}">Create a new concejalium</a>
+        </li>
+    </ul>
+{% endblock %}

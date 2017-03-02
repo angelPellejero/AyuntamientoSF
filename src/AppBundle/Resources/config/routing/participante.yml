@@ -1,0 +1,28 @@
+participante_index:
+    path:     /
+    defaults: { _controller: "AppBundle:Participante:index" }
+    methods:  GET
+
+ciudadano_mostrar_actividades:
+  path: /elegir
+  defaults: { _controller: "AppBundle:Default:actividades_evento" }
+
+participante_show:
+    path:     /{id}/show
+    defaults: { _controller: "AppBundle:Participante:show" }
+    methods:  GET
+
+participante_new:
+    path:     /new
+    defaults: { _controller: "AppBundle:Participante:new" }
+    methods:  [GET, POST]
+
+participante_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AppBundle:Participante:edit" }
+    methods:  [GET, POST]
+
+participante_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AppBundle:Participante:delete" }
+    methods:  DELETE

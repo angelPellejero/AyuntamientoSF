@@ -1,0 +1,18 @@
+app_actividad:
+    resource: "@AppBundle/Resources/config/routing/actividad.yml"
+    prefix:   /actividad
+app_autoridad:
+    resource: "@AppBundle/Resources/config/routing/autoridad.yml"
+    prefix:   /autoridad
+ app_concejalia:
+     resource: "@AppBundle/Resources/config/routing/concejalia.yml"
+     prefix:   /concejalia
+app_evento:
+    resource: "@AppBundle/Resources/config/routing/evento.yml"
+    prefix:   /evento
+app_participante:
+    resource: "@AppBundle/Resources/config/routing/participante.yml"
+    prefix:   /participante
+app_patrocinador:
+     resource: "@AppBundle/Resources/config/routing/patrocinador.yml"
+     prefix:   /patrocinador

@@ -1,0 +1,7 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+   <h1>Eres un ciudadano o Trabajas en el ayuntamiento? </h1>
+   <a href="{{ path('ciudadano_mostrar_actividades') }}">ciudadano</a><br>
+   <a href="{{ path('politico_entrar') }}">politico</a><br>
+{% endblock %}

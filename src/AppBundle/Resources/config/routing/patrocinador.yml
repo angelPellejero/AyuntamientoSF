@@ -1,0 +1,24 @@
+patrocinador_index:
+    path:     /
+    defaults: { _controller: "AppBundle:Patrocinador:index" }
+    methods:  GET
+
+patrocinador_show:
+    path:     /{id}/show
+    defaults: { _controller: "AppBundle:Patrocinador:show" }
+    methods:  GET
+
+patrocinador_new:
+    path:     /new
+    defaults: { _controller: "AppBundle:Patrocinador:new" }
+    methods:  [GET, POST]
+
+patrocinador_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AppBundle:Patrocinador:edit" }
+    methods:  [GET, POST]
+
+patrocinador_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AppBundle:Patrocinador:delete" }
+    methods:  DELETE
