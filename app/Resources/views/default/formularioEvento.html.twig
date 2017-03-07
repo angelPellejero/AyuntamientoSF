@@ -11,20 +11,20 @@
                 <td>Descripcion</td><td><input type="text" name="descripcionEvento"></td>
             </tr>
             <tr>
-                <td>Fecha y hora</td><td><input type="date" name="fechaEvento"></td>
-            </tr>
-            <tr>
-                <td>lugar</td><td><input type="text" name="lugarEvento"></td>
-            </tr>
-            <tr>
                 <td>Verano o Invierno</td>
                 <td>
                     <select name="temporadaEvento">
                         {% for actividad in actividades %}
-                            <option value="{{actividad.id}}">{{actividad.nombre}}</option>
+                            <option value="{{actividad.id}}">{{actividad.nombre}} Inicio {{actividad.finicio|date("m/d") }} Fin {{actividad.ffin|date("m/d") }}</option>
                         {% endfor %}
                     </select>
                 </td>
+            </tr>
+            <tr>
+                <td>Fecha y hora</td><td><input type="date" name="fechaEvento"></td>
+            </tr>
+            <tr>
+                <td>lugar</td><td><input type="text" name="lugarEvento"></td>
             </tr>
             <tr>
                 <td>Patrocinadores</td>

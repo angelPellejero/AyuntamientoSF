@@ -88,23 +88,33 @@ class DefaultController extends Controller {
         $patrocinadorEvento = $req->get("patrocinadorEvento");
         $idpolitico = $req->get("idpolitico");
 
-        $usr = "C6PC10\SQLEXPRESS";
-        $db = array("Database" => "Ayuntamiento", "CharacterSet" => "UTF-8");
-        $con = sqlsrv_connect($usr, $db);
-        if (!$con) {
-            die(print_r(sqlsrv_errors(), true));
-        }
-        $sql = "insert into Evento (nombre, descripcion, fyh, lugar, idActividad, idConceOrganiza, idPatrocina) "
-                . "values('$nombreEvento', '$descripcionEvento', '$fechaEvento', '$lugarEvento', $temporadaEvento, $patrocinadorEvento, $idpolitico)";
-        $stmt= sqlsrv_query($con, $sql);
-         if (!$stmt) {
-            //sqlsrv_free_stmt($stmt);
+        $actividad = $this->getDoctrine()->getManager()->getRepository('AppBundle:Actividad')->findByid($temporadaEvento);
+        $mes=$actividad[0]->getFinicio()->format('m');
+        $diaI=$actividad[0]->getFinicio()->format('d');
+        $diaF=$actividad[0]->getFfin()->format('d');
+        $fecha2 = date_create_from_format('Y-m-d', $fechaEvento);
+
+        if ($mes == $fecha2->format('m') && $diaI >= $fechaEvento->format('d') && $diaF >= $fecha2->format('d')) {
+            $usr = "C6PC10\SQLEXPRESS";
+            $db = array("Database" => "Ayuntamiento", "CharacterSet" => "UTF-8");
+            $con = sqlsrv_connect($usr, $db);
+            if (!$con) {
+                die(print_r(sqlsrv_errors(), true));
+            }
+            $sql = "insert into Evento (nombre, descripcion, fyh, lugar, idActividad, idConceOrganiza, idPatrocina) "
+                    . "values('$nombreEvento', '$descripcionEvento', '$fechaEvento', '$lugarEvento', $temporadaEvento, $patrocinadorEvento, $idpolitico)";
+            $stmt = sqlsrv_query($con, $sql);
+            if (!$stmt) {
+                //sqlsrv_free_stmt($stmt);
+                //  sqlsrv_close($con);
+                return $this->render('default/eventoFallido.html.twig');
+            }
+            //  sqlsrv_free_stmt($stmt);
             //  sqlsrv_close($con);
-            return $this->render('default/eventoFallido.html.twig');
+            return $this->render('default/eventoExito.html.twig');
+        }else{
+            return $this->render('default/eventoErrorFecha.html.twig');
         }
-        //  sqlsrv_free_stmt($stmt);
-        //  sqlsrv_close($con);
-        return $this->render('default/eventoExito.html.twig');
     }
 
 }
