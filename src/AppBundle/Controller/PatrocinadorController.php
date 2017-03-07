@@ -41,8 +41,8 @@ class PatrocinadorController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($patrocinador);
             $em->flush($patrocinador);
-
-            return $this->redirectToRoute('patrocinador_show', array('id' => $patrocinador->getId()));
+            
+            return $this->render('default/patrocinador.html.twig');
         }
 
         return $this->render('patrocinador/new.html.twig', array(

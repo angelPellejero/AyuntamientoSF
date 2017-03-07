@@ -1,45 +1,46 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-  <h1>Vas a registrar un evento {{idpolitico}} </h1>
-  <form method="POST"action="eventoAddBy">
-    <table>
-      <tr>
-        <td>Nombre del evento</td><td><input type="text" name="nombreEvento"></td>
-      </tr>
-      <tr>
-        <td>Descripcion</td><td><input type="text" name="descripcionEvento"></td>
-      </tr>
-      <tr>
-        <td>Fecha y hora</td><td><input type="date" name="fechaEvento"></td>
-      </tr>
-      <tr>
-        <td>lugar</td><td><input type="text" name="lugarEvento"></td>
-      </tr>
-      <tr>
-        <td>Verano o Invierno</td>
-        <td>
-          <select name="temporadaEvento">
-            <option value="1">Verano</option>
-            <option value="2">Invierno</option>
-          </select>
-        </td>
-      </tr>
-      <tr>
-        <td>Patrocinadores</td>
-        <td>
-          <select name="patrocinadorEvento">
-        {% for patrocina in patrocinadores %}
-            <option value="{{patrocina.id}}">{{patrocina.nombre}}</option>
-          {% endfor %}
-        </select>
-        </td>
-      </tr>
-      <tr>
-        <td colspan="2"><iput type="submit" value="registrar"></td>
-      </tr>
-    </table>
-    <input type="hidden" name="idpolitico" value="{{idpolitico}}">
-  </form>
-  <a href="{{ path('home_index') }}">Volver</a><br>
+    <h1>Vas a registrar un evento </h1>
+    <form action="{{path('eventoAddBy')}}" method="POST" >
+        <table>
+            <tr>
+                <td>Nombre del evento</td><td><input type="text" name="nombreEvento"></td>
+            </tr>
+            <tr>
+                <td>Descripcion</td><td><input type="text" name="descripcionEvento"></td>
+            </tr>
+            <tr>
+                <td>Fecha y hora</td><td><input type="date" name="fechaEvento"></td>
+            </tr>
+            <tr>
+                <td>lugar</td><td><input type="text" name="lugarEvento"></td>
+            </tr>
+            <tr>
+                <td>Verano o Invierno</td>
+                <td>
+                    <select name="temporadaEvento">
+                        {% for actividad in actividades %}
+                            <option value="{{actividad.id}}">{{actividad.nombre}}</option>
+                        {% endfor %}
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Patrocinadores</td>
+                <td>
+                    <select name="patrocinadorEvento">
+                        {% for patrocina in patrocinadores %}
+                            <option value="{{patrocina.id}}">{{patrocina.nombre}}</option>
+                        {% endfor %}
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2"><input type="submit" value="registrar"></td>
+            </tr>
+        </table>
+        <input type="hidden" name="idpolitico" value="{{idpolitico}}">
+    </form>
+    <a href="{{ path('home_index') }}">Volver</a><br>
 {% endblock %}

@@ -29,6 +29,6 @@ politico_add_evento:
   methods:  [GET, POST]
 
 eventoAddBy:
-  path:     /addEventoPoliticoBy
+  path:     /eventoCreado
   defaults: { _controller: "AppBundle:Default:addEventoPoliticoBy" }
   methods:  [GET, POST]
